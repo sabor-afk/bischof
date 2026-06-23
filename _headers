@@ -1,0 +1,61 @@
+# ── HEADERS DE SEGURANÇA E PERFORMANCE — BISCHOF ─────────────
+
+/*
+  # ── HTTPS forçado por 1 ano ──
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # ── Impede o site de ser carregado em iframe (clickjacking) ──
+  X-Frame-Options: DENY
+
+  # ── Impede sniffing de tipo de conteúdo ──
+  X-Content-Type-Options: nosniff
+
+  # ── Proteção XSS legada (browsers antigos) ──
+  X-XSS-Protection: 1; mode=block
+
+  # ── Controla informações de referência enviadas ──
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # ── Desativa recursos sensíveis não usados ──
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+
+  # ── Content Security Policy ──
+  # scripts: apenas próprios + inline necessário
+  # estilos: próprios + Google Fonts + inline (necessário para estilos dinâmicos)
+  # fontes: Google Fonts
+  # imagens: próprias + data URIs
+  # conexões: WhatsApp + Google Fonts
+  # frames: nenhum
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://wa.me https://api.whatsapp.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'
+
+  # ── Cache padrão para HTML ──
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# ── Cache longo para assets imutáveis ──
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# ── Cache médio para CSS e JS ──
+/*.css
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/*.js
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# ── Cache para XML e TXT ──
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+  Content-Type: application/xml; charset=utf-8
+
+/robots.txt
+  Cache-Control: public, max-age=86400
+  Content-Type: text/plain; charset=utf-8

@@ -1,0 +1,329 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bischof: #1A7A6E; --bischof-escuro: #0F5C52; --bischof-claro: #25A090;
+    --bischof-muito-escuro: #082E28; --bischof-light: #E5F5F3;
+    --alemao: #C8181E; --alemao-escuro: #9E1015;
+    --creme: #FDF8F3; --branco: #fff; --cinza-claro: #F5F2EE;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Open Sans', sans-serif; background: var(--creme); color: #444; overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--bischof-muito-escuro); display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; height: 60px; box-shadow: 0 2px 12px rgba(0,0,0,0.25); }
+  .nav-logo-area { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-marca { font-family: 'Montserrat', sans-serif; font-size: 0.52rem; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 0.15em; text-transform: uppercase; }
+  .nav-nome { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 900; color: #fff; }
+  .nav-nome span { color: #6ECCC2; }
+  .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+  .nav-links a { color: rgba(255,255,255,0.75); font-size: 0.78rem; font-weight: 500; text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta { background: var(--bischof) !important; color: #fff !important; padding: 0.4rem 1rem; border-radius: 4px; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; z-index: 99; background: var(--bischof-muito-escuro); flex-direction: column; padding: 1rem 1.5rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: rgba(255,255,255,0.8); font-size: 1rem; font-weight: 600; text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); letter-spacing: 0.05em; }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu .m-cta { margin-top: 0.8rem; background: var(--bischof-claro); color: #fff !important; text-align: center; padding: 0.9rem; border-radius: 6px; font-weight: 700 !important; }
+
+  .hero { min-height: 100vh; background: var(--bischof-escuro); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 7rem 1.5rem 4rem; position: relative; overflow: hidden; text-align: center; }
+  .hero-pattern { position: absolute; inset: 0; opacity: 0.05; background-image: repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%); background-size: 20px 20px; }
+  .hero-content { position: relative; z-index: 2; max-width: 500px; width: 100%; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(255,255,255,0.1); color: #fff; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 3px; margin-bottom: 1.2rem; border: 1px solid rgba(255,255,255,0.18); }
+  .hero-sub-marca { display: block; color: #6ECCC2; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(1.9rem, 7vw, 2.8rem); font-weight: 900; color: #fff; line-height: 1.15; margin-bottom: 1rem; }
+  .hero-sub { font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 2rem; }
+  .hero-sub strong { color: #fff; }
+  .hero-btns { display: flex; flex-direction: column; gap: 0.8rem; }
+  .btn-bischof { background: var(--bischof-claro); color: #fff; padding: 1rem; border-radius: 6px; font-size: 0.95rem; font-weight: 700; text-decoration: none; font-family: 'Montserrat', sans-serif; display: block; }
+  .btn-bischof:hover { background: var(--bischof); }
+  .btn-outline-light { border: 2px solid rgba(255,255,255,0.35); color: #fff; padding: 1rem; border-radius: 6px; font-size: 0.95rem; font-weight: 600; text-decoration: none; font-family: 'Montserrat', sans-serif; display: block; }
+  .hero-cards { display: flex; gap: 0.8rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center; }
+  .hero-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 0.9rem 1.2rem; text-align: center; flex: 1; min-width: 100px; height: auto; }
+  .hero-card-icon { font-size: 1.4rem; display: block; margin-bottom: 0.3rem; }
+  .hero-card-label { font-size: 0.6rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.08em; display: block; }
+  .hero-card-val { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 800; color: #fff; display: block; margin-top: 0.15rem; }
+  .hero-left { width: 100%; display: flex; padding: 7rem 1.5rem 4rem; min-height: 100vh; align-items: center; justify-content: center; }
+  .hero-right-desktop { display: none !important; visibility: hidden !important; }
+
+  .sobre { background: var(--branco); padding: 4rem 1.5rem; }
+  .sobre-visual { border-radius: 8px; background: linear-gradient(135deg, var(--bischof-escuro), var(--bischof)); padding: 2.5rem; text-align: center; margin-bottom: 2rem; }
+  .sobre-emoji { font-size: 3.5rem; display: block; margin-bottom: 0.8rem; }
+  .sobre-visual-title { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.1rem; color: #fff; }
+  .sobre-visual-sub { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; }
+  .sobre-tag-pill { display: inline-block; margin-top: 1rem; background: rgba(255,255,255,0.15); color: #fff; font-size: 0.68rem; font-weight: 700; padding: 0.4rem 1rem; border-radius: 3px; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); }
+  .section-tag-bischof { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--bischof); margin-bottom: 0.6rem; display: block; }
+  .sobre h2 { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 900; margin-bottom: 1rem; line-height: 1.2; color: #222; }
+  .sobre p { color: #666; line-height: 1.85; margin-bottom: 0.9rem; font-size: 0.92rem; }
+  .diferenciais { margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0.65rem; }
+  .diferencial { display: flex; align-items: center; gap: 0.75rem; font-size: 0.87rem; color: #333; font-weight: 500; }
+  .dif-check { width: 20px; height: 20px; min-width: 20px; background: var(--bischof); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.62rem; font-weight: 900; }
+
+  .faixa-comercial { background: var(--bischof-muito-escuro); padding: 2.5rem 1.5rem; }
+  .faixa-comercial-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  .faixa-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 1.2rem 1.5rem; display: flex; align-items: flex-start; gap: 1rem; }
+  .faixa-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .faixa-titulo { font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; color: #6ECCC2; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem; }
+  .faixa-valor { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 900; color: #fff; margin-bottom: 0.2rem; }
+  .faixa-obs { font-size: 0.75rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+  /* MARCAS */
+  .marcas { background: #f5f5f5; padding: 4rem 1.5rem; }
+  .section-header { text-align: center; margin-bottom: 2.5rem; }
+  .section-header h2 { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 900; color: #222; margin-bottom: 0.6rem; }
+  .section-header p { color: #888; font-size: 0.9rem; }
+  .section-tag-verde { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--bischof); margin-bottom: 0.6rem; display: block; }
+
+  .marca-destaque {
+    background: linear-gradient(135deg, var(--alemao-escuro), var(--alemao));
+    border-radius: 12px; padding: 2rem; text-align: center;
+    margin-bottom: 1.5rem; overflow: hidden; position: relative;
+    border: 2px solid rgba(255,255,255,0.15);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  .marca-destaque::before { content:''; position:absolute; top:-40px; right:-40px; width:160px; height:160px; border-radius:50%; background:rgba(255,255,255,0.05); }
+  .destaque-badge { display: inline-block; background: rgba(255,255,255,0.18); color: #fff; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.3rem 0.9rem; border-radius: 3px; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.25); }
+  .marca-destaque img { height: 130px; object-fit: contain; display: block; margin: 0 auto 0.5rem; }
+  .marca-destaque-desc { font-size: 0.83rem; color: rgba(255,255,255,0.75); line-height: 1.6; margin-top: 0.5rem; }
+
+  .marcas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .marca-card { background: #fff; border-radius: 10px; padding: 1.3rem 1rem; text-align: center; border: 1px solid #e0e0e0; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; min-height: 110px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .marca-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+  .marca-card img { max-height: 68px; max-width: 90%; object-fit: contain; }
+  .marca-nome { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 700; color: #555; }
+  .marcas-obs { margin-top: 1.5rem; background: var(--bischof-light); border-radius: 6px; padding: 1rem 1.2rem; font-size: 0.8rem; color: var(--bischof-escuro); line-height: 1.6; text-align: center; border: 1px solid rgba(26,122,110,0.15); }
+
+  .como-comprar { background: var(--bischof-muito-escuro); padding: 4rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); }
+  .section-header.bischof h2 { color: #fff; }
+  .section-header.bischof p { color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+  .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem; }
+  .step { text-align: center; }
+  .step-num { font-family: 'Montserrat', sans-serif; font-size: 2.2rem; font-weight: 900; color: rgba(255,255,255,0.06); line-height: 1; display: block; margin-bottom: 0.4rem; }
+  .step-icon { width: 50px; height: 50px; background: rgba(110,204,194,0.12); border: 1px solid rgba(110,204,194,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 auto 0.8rem; }
+  .step h3 { font-family: 'Montserrat', sans-serif; font-size: 0.88rem; font-weight: 800; color: #fff; margin-bottom: 0.4rem; }
+  .step p { font-size: 0.76rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+  .steps-cta { text-align: center; }
+  .btn-bischof-solid { background: var(--bischof-claro); color: #fff; padding: 1rem 2rem; border-radius: 6px; font-size: 0.92rem; font-weight: 800; text-decoration: none; font-family: 'Montserrat', sans-serif; display: inline-block; }
+
+  .regioes { background: var(--cinza-claro); padding: 4rem 1.5rem; }
+  .regioes h2 { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 900; color: #222; margin-bottom: 0.5rem; }
+  .regioes-sub { color: #888; font-size: 0.88rem; margin-bottom: 2rem; line-height: 1.6; }
+  
+  .regioes-obs { margin-top: 1.2rem; background: var(--bischof-light); border-radius: 6px; padding: 1rem 1.2rem; font-size: 0.82rem; color: var(--bischof-escuro); line-height: 1.6; display: flex; gap: 0.6rem; }
+
+  .horarios { background: var(--branco); padding: 2rem 1.5rem; display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; border-top: 3px solid var(--bischof); }
+  .horario-item { text-align: center; }
+  .horario-dia { font-family: 'Montserrat', sans-serif; font-size: 0.64rem; font-weight: 700; color: #999; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .horario-hora { font-family: 'Montserrat', sans-serif; font-size: 1.05rem; font-weight: 900; color: var(--bischof-escuro); }
+  .horario-fechado { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; color: #bbb; }
+  .horario-sep { width: 1px; height: 40px; background: #ddd; }
+
+  .contato { background: var(--branco); padding: 4rem 1.5rem; }
+  .contato h2 { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 900; margin-bottom: 1rem; color: #222; }
+  .contato-desc { color: #666; line-height: 1.85; margin-bottom: 1.5rem; font-size: 0.92rem; }
+  .contato-items { display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
+  .contato-item { display: flex; align-items: flex-start; gap: 0.9rem; }
+  .contato-icon { width: 42px; height: 42px; min-width: 42px; background: var(--bischof-light); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+  .contato-text strong { display: block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #aaa; margin-bottom: 0.15rem; }
+  .contato-text span { font-size: 0.9rem; color: #333; font-weight: 500; }
+  .contato-text small { display: block; font-size: 0.76rem; color: #aaa; margin-top: 0.2rem; line-height: 1.5; }
+  .condicoes-box { background: var(--cinza-claro); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; border-left: 3px solid var(--bischof); }
+  .condicoes-box h3 { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; color: var(--bischof-escuro); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .condicao-linha { display: flex; gap: 0.7rem; align-items: flex-start; margin-bottom: 0.8rem; font-size: 0.85rem; color: #444; line-height: 1.6; }
+  .condicao-linha:last-child { margin-bottom: 0; }
+  .condicao-linha .icon { font-size: 1rem; flex-shrink: 0; }
+  .wpp-card { background: var(--bischof-escuro); border-radius: 10px; padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+  .wpp-card h3 { font-family: 'Montserrat', sans-serif; font-size: 1.15rem; color: #fff; font-weight: 900; }
+  .wpp-card p { font-size: 0.83rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+  .wpp-numero { font-family: 'Montserrat', sans-serif; font-size: 1.3rem; font-weight: 900; color: #fff; text-align: center; }
+  .wpp-numero span { font-size: 0.65rem; color: rgba(255,255,255,0.45); display: block; font-weight: 400; margin-bottom: 0.15rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .wpp-btn { display: flex; align-items: center; gap: 0.7rem; justify-content: center; background: #25D366; color: #fff; padding: 1rem; border-radius: 6px; font-size: 0.95rem; font-weight: 700; text-decoration: none; font-family: 'Montserrat', sans-serif; }
+  .wpp-float { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200; background: #25D366; color: #fff; border-radius: 50%; width: 58px; height: 58px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; box-shadow: 0 4px 16px rgba(37,211,102,0.45); text-decoration: none; transition: transform 0.2s; }
+  footer { background: var(--bischof-muito-escuro); padding: 1.5rem; text-align: center; display: flex; flex-direction: column; gap: 0.5rem; align-items: center; }
+  .footer-brand { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; color: rgba(255,255,255,0.35); letter-spacing: 0.14em; text-transform: uppercase; }
+  .footer-name { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 900; color: rgba(255,255,255,0.85); }
+  .footer-name span { color: #6ECCC2; }
+  footer p { font-size: 0.7rem; color: rgba(255,255,255,0.3); }
+
+  @media (min-width: 768px) {
+    nav { padding: 0 2.5rem; height: 64px; }
+    .hamburger { display: none !important; }
+    .nav-links { display: flex !important; }
+    .mobile-menu { display: none !important; }
+    .hero { text-align: left; padding: 0; position: relative; overflow: hidden; }
+    .hero-left { padding: 8rem 3rem 5rem calc(3rem); padding-right: 420px; display: flex; align-items: center; min-height: 100vh; }
+    .hero-content { max-width: 560px; width: 100%; }
+    .hero-right-desktop { display: flex !important; visibility: visible !important; position: absolute; right: 0; top: 0; bottom: 0; width: 360px; background: var(--bischof-muito-escuro); flex-direction: column; align-items: center; justify-content: center; gap: 0.7rem; padding: 3rem 2rem 3rem 3.5rem; clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%); }
+    .hero-right-desktop .hero-card { width: 100%; padding: 0.8rem 1.2rem; min-height: unset !important; height: auto !important; flex: 0 0 auto !important; }
+    .hero-right-desktop .hero-card-icon { font-size: 1.1rem; margin-bottom: 0.15rem; }
+    .hero-right-desktop .hero-card-label { font-size: 0.55rem; }
+    .hero-right-desktop .hero-card-val { font-size: 0.85rem; }
+    .hero-alemao-badge-d { background: var(--alemao-escuro); border-radius: 8px; padding: 0.8rem 1.2rem; width: 100%; text-align: center; border: 1px solid rgba(255,255,255,0.1); flex: 0 0 auto; }
+    .hero-alemao-badge-d .sub { font-size: 0.58rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.12em; display: block; margin-bottom: 0.2rem; }
+    .hero-alemao-badge-d .nome { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 900; color: #fff; }
+    .hero-right-desktop .hero-card { width: 100%; }
+    .hero-alemao-badge-d { background: var(--alemao-escuro); border-radius: 8px; padding: 1rem 1.5rem; width: 100%; text-align: center; border: 1px solid rgba(255,255,255,0.1); }
+    .hero-alemao-badge-d .sub { font-size: 0.62rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.14em; display: block; margin-bottom: 0.25rem; }
+    .hero-alemao-badge-d .nome { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 900; color: #fff; }
+    .hero-btns { flex-direction: row; }
+    .btn-bischof, .btn-outline-light { display: inline-block; padding: 0.85rem 2rem; }
+    .hero-cards { display: none; }
+    .sobre { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; padding: 5rem 3rem; }
+    .sobre-visual { margin-bottom: 0; padding: 3rem; min-height: 320px; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+    .faixa-comercial { padding: 3rem; }
+    .faixa-comercial-grid { grid-template-columns: repeat(3, 1fr); }
+    .marcas { padding: 5rem 4rem; }
+    .marca-destaque { display: flex; align-items: center; gap: 2.5rem; text-align: left; padding: 2.5rem 3rem; }
+    .marca-destaque img { height: 150px; margin: 0; flex-shrink: 0; }
+    .marca-destaque-content { flex: 1; }
+    .marcas-grid { grid-template-columns: repeat(4, 1fr); }
+    .marca-card { min-height: 120px; }
+    .marca-card img { max-height: 75px; }
+    .como-comprar { padding: 5rem 3rem; }
+    .steps { grid-template-columns: repeat(4, 1fr); }
+    .regioes { padding: 5rem 3rem; }
+    .regioes-estados { flex-direction: row; }
+    .estado-bloco { flex: 1; }
+    .contato { padding: 5rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    footer { flex-direction: row; justify-content: space-between; padding: 2rem 3rem; text-align: left; }
+    .wpp-float { display: none; }
+  }
+  @media (max-width: 767px) {
+    .hamburger { display: flex; }
+    .nav-links { display: none; }
+  }
+/* === CARDS DE ESTADO === */
+.estados-simples { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.estado-simples {
+    border-radius: 12px; padding: 3rem 2.5rem;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    flex: 1; min-width: 180px; max-width: 260px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.estado-simples:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); }
+.estado-simples.sc { background: linear-gradient(135deg, #0F5C52, #1A7A6E); }
+.estado-simples.pr { background: linear-gradient(135deg, #0F4020, #1A5C2E); }
+.estado-simples.sp { background: linear-gradient(135deg, #1A2A60, #2C3E7A); }
+.estado-simples::before {
+    content: attr(data-sigla);
+    position: absolute; right: -10px; bottom: -15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7rem; font-weight: 900;
+    color: rgba(255,255,255,0.06);
+    line-height: 1; pointer-events: none;
+}
+.estado-flag { font-size: 2.2rem; }
+.estado-sigla-grande { font-family: 'Montserrat', sans-serif; font-size: 3rem; font-weight: 900; color: #fff; line-height: 1; }
+.estado-nome-grande { font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.12em; }
+
+/* ── MODAL PRIVACIDADE ───────────────────────────────────────── */
+.privacidade-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeInOverlay 0.2s ease;
+}
+@keyframes fadeInOverlay { from { opacity:0; } to { opacity:1; } }
+.privacidade-modal {
+    background: #111;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    width: 100%;
+    max-width: 680px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    animation: slideUpModal 0.25s ease;
+    overflow: hidden;
+}
+@keyframes slideUpModal { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+.privacidade-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    flex-shrink: 0;
+}
+.privacidade-header h2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+}
+.privacidade-fechar {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1rem;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+.privacidade-fechar:hover { background: rgba(255,255,255,0.18); }
+.privacidade-body {
+    padding: 24px 28px;
+    overflow-y: auto;
+    flex: 1;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.88rem;
+    line-height: 1.75;
+}
+.privacidade-body h3 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 24px 0 8px;
+}
+.privacidade-body h3:first-of-type { margin-top: 0; }
+.privacidade-body p { margin-bottom: 10px; }
+.privacidade-body ul { padding-left: 20px; margin-bottom: 10px; }
+.privacidade-body ul li { margin-bottom: 4px; }
+.privacidade-body strong { color: #fff; }
+.priv-atualizado {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 20px !important;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+
+/* ── BOTÃO LINK SABOR DO ALEMÃO ──────────────────────────────── */
+.btn-sabor-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: background 0.2s;
+}
+.btn-sabor-link:hover { background: rgba(255,255,255,0.25); }

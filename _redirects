@@ -1,0 +1,7 @@
+# ── REDIRECTS BISCHOF DISTRIBUIDORA ─────────────────────────
+
+# Forçar www para domínio raiz (sem www)
+https://www.bischof.com.br/* https://bischof.com.br/:splat 301!
+
+# Fallback: qualquer página não encontrada vai para o index
+/*  /index.html  200
