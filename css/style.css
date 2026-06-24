@@ -120,17 +120,17 @@
   .horario-fechado { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; color: #bbb; }
   .horario-sep { width: 1px; height: 40px; background: #ddd; }
 
-  .contato { background: var(--branco); padding: 4rem 1.5rem; }
+  .contato { background: var(--branco); padding: 4rem 1.5rem; text-align: center; }
   .contato h2 { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 900; margin-bottom: 1rem; color: #222; }
   .contato-desc { color: #666; line-height: 1.85; margin-bottom: 1.5rem; font-size: 0.92rem; }
-  .contato-items { display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
-  .contato-item { display: flex; align-items: flex-start; gap: 0.9rem; }
-  .contato-icon { width: 42px; height: 42px; min-width: 42px; background: var(--bischof-light); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+  .contato-items { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+  .contato-item { display: flex; flex-direction: column; align-items: center; gap: 0.9rem; text-align: center; }
+  .contato-icon { width: 42px; height: 42px; min-width: 42px; background: var(--bischof-light); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1rem; margin: 0 auto; }
   .contato-text strong { display: block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #aaa; margin-bottom: 0.15rem; }
   .contato-text span { font-size: 0.9rem; color: #333; font-weight: 500; }
   .contato-text small { display: block; font-size: 0.76rem; color: #aaa; margin-top: 0.2rem; line-height: 1.5; }
-  .condicoes-box { background: var(--cinza-claro); border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem; border-left: 3px solid var(--bischof); }
-  .condicoes-box h3 { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; color: var(--bischof-escuro); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .condicoes-box { background: var(--cinza-claro); border-radius: 8px; padding: 1.5rem; margin: 0 auto 2rem; max-width: 700px; border-left: 3px solid var(--bischof); }
+  .condicoes-box h3 { font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 800; color: var(--bischof-escuro); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.08em; text-align: left; }
   .condicao-linha { display: flex; gap: 0.7rem; align-items: flex-start; margin-bottom: 0.8rem; font-size: 0.85rem; color: #444; line-height: 1.6; }
   .condicao-linha:last-child { margin-bottom: 0; }
   .condicao-linha .icon { font-size: 1rem; flex-shrink: 0; }
@@ -186,7 +186,8 @@
     .regioes { padding: 5rem 3rem; }
     .regioes-estados { flex-direction: row; }
     .estado-bloco { flex: 1; }
-    .contato { padding: 5rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .contato { padding: 5rem 3rem; }
+    .contato-items { grid-template-columns: repeat(3, 1fr); }
     footer { flex-direction: row; justify-content: space-between; padding: 2rem 3rem; text-align: left; }
     .wpp-float { display: none; }
   }
@@ -327,3 +328,75 @@
     transition: background 0.2s;
 }
 .btn-sabor-link:hover { background: rgba(255,255,255,0.25); }
+
+/* ── CARD MODAL POLÍTICA DE PRIVACIDADE ──────────────────────── */
+.privacidade-card-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.privacidade-card-overlay:target {
+    display: flex;
+}
+.privacidade-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+.privacidade-fechar {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #999;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+.privacidade-fechar:hover {
+    color: #333;
+}
+.privacidade-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--bischof);
+    margin-bottom: 1.5rem;
+    margin-right: 3rem;
+}
+.privacidade-card-content {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #555;
+}
+.privacidade-card-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--bischof);
+    margin-top: 1.5rem;
+    margin-bottom: 0.7rem;
+}
+.privacidade-card-content p {
+    margin-bottom: 1rem;
+}
