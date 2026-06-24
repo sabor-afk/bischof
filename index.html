@@ -12,11 +12,15 @@
 <meta property="og:title" content="Bischoff Distribuidora">
 <meta property="og:description" content="Distribuidora de salgados congelados em Joinville e região.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://sabor-afk.github.io/bischoff/img/logo-bischoff.webp">
+<meta property="og:image" content="https://sabor-afk.github.io/bischoff/img/og-image-bischoff.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bischoff Distribuidora - Salgados Congelados">
 <meta name="twitter:description" content="Distribuidora oficial de salgados congelados em Joinville, SC">
 <link rel="canonical" href="https://sabor-afk.github.io/bischoff/">
+<link rel="preload" as="image" href="https://sabor-afk.github.io/bischoff/img/og-image-bischoff.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,13 +53,116 @@
   "priceRange": "$$"
 }
 </script>
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Início",
+      "item": "https://sabor-afk.github.io/bischoff/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Sobre",
+      "item": "https://sabor-afk.github.io/bischoff/#sobre"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Marcas",
+      "item": "https://sabor-afk.github.io/bischoff/#marcas"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Como Comprar",
+      "item": "https://sabor-afk.github.io/bischoff/#como-comprar"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Entregas",
+      "item": "https://sabor-afk.github.io/bischoff/#regioes"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "Contato",
+      "item": "https://sabor-afk.github.io/bischoff/#contato"
+    }
+  ]
+}
+</script>
+
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Qual é o pedido mínimo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O pedido mínimo é de R$ 150,00. Este valor dá acesso a todos os produtos e marcas que distribuímos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quais são as formas de pagamento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oferecemos pagamento via boleto a prazo. Os prazos são flexíveis e podem ser ajustados conforme análise de crédito do cliente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Em quais regiões entregamos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entregamos em Santa Catarina, Paraná e São Paulo, com limite de entrega até Juquiá/SP. Contate-nos para verificar sua região."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Os salgados chegam congelados?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim! Utilizamos frota própria refrigerada que mantém a cadeia do frio de ponta a ponta, garantindo que os salgados cheguem congelados e em perfeito estado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual é o tempo de entrega?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O tempo de entrega varia conforme a região. Temos rotas fixas em SC, PR e SP. Consulte-nos para saber o prazo específico para sua localização."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vocês são distribuidores oficiais?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim! Somos distribuidores oficiais da marca Sabor do Alemão® e representamos outras marcas selecionadas de qualidade."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">Distribuidora de Salgados Congelados em Joinville - SC</h1>
 
 <nav>
   <a href="#inicio">
-    <img src="img/logo-bischof.webp" alt="Bischof Distribuidora" style="height:46px;object-fit:contain;">
+    <img loading="lazy" src="img/logo-bischof.webp" alt="Bischof Distribuidora" style="height:46px;object-fit:contain;">
   </a>
   <div class="nav-links">
     <a href="#sobre">Sobre</a>
@@ -198,7 +305,7 @@
   </div>
 
   <div class="marca-destaque">
-    <a href="sabor-do-alemao/index.html" target="_blank" title="Visitar site Sabor do Alemão"><img src="img/logo-sabor-do-alemao.webp" alt="Sabor do Alemão - Logo marca de salgados"></a>
+    <a href="sabor-do-alemao/index.html" target="_blank" title="Visitar site Sabor do Alemão"><img loading="lazy" src="img/logo-sabor-do-alemao.webp" alt="Sabor do Alemão - Logo marca de salgados"></a>
     <div class="marca-destaque-content">
       <span class="destaque-badge">⭐ Marca principal</span>
       <div class="marca-destaque-desc">Nossa marca carro-chefe. Linha completa de salgados congelados com qualidade comprovada — coxinhas, quibes, esfirras e muito mais.</div>
@@ -209,13 +316,13 @@
   </div>
 
   <div class="marcas-grid">
-    <div class="marca-card"><img src="img/logo-maizum.webp" alt="Logo Maizum - Marca distribuída"><span class="marca-nome">Maizum</span></div>
+    <div class="marca-card"><img loading="lazy" src="img/logo-maizum.webp" alt="Logo Maizum - Marca distribuída"><span class="marca-nome">Maizum</span></div>
     <div class="marca-card"><img style="max-height:105px;max-width:100%;" src="img/logo-delicks.webp" alt="Delicks"><span class="marca-nome">Delick's</span></div>
-    <div class="marca-card"><img src="img/logo-disk-salgadinhos.webp" alt="Logo Disk Salgadinhos - Marca distribuída"><span class="marca-nome">Disk Salgadinhos</span></div>
+    <div class="marca-card"><img loading="lazy" src="img/logo-disk-salgadinhos.webp" alt="Logo Disk Salgadinhos - Marca distribuída"><span class="marca-nome">Disk Salgadinhos</span></div>
     <div class="marca-card"><img style="max-height:105px;max-width:100%;" src="img/logo-serra-da-canastra.webp" alt="Serra da Canastra"><span class="marca-nome">Serra da Canastra</span></div>
-    <div class="marca-card"><img src="img/logo-daniza.webp" alt="Logo DaNiza - Marca distribuída"><span class="marca-nome">DaNiza</span></div>
+    <div class="marca-card"><img loading="lazy" src="img/logo-daniza.webp" alt="Logo DaNiza - Marca distribuída"><span class="marca-nome">DaNiza</span></div>
     <div class="marca-card"><img style="max-height:105px;max-width:100%;" src="img/logo-mein-haus.webp" alt="Mein Haus"><span class="marca-nome">Mein Haus</span></div>
-    <div class="marca-card"><img src="img/logo-italiana-gourmet.webp" alt="Logo Italiana Gourmet - Marca distribuída"><span class="marca-nome">Italiana Gourmet</span></div>
+    <div class="marca-card"><img loading="lazy" src="img/logo-italiana-gourmet.webp" alt="Logo Italiana Gourmet - Marca distribuída"><span class="marca-nome">Italiana Gourmet</span></div>
   </div>
   <div class="marcas-obs">🤝 Todas as marcas são distribuídas com qualidade e pontualidade. Entre em contato para consultar disponibilidade por marca e região.</div>
 </section>
@@ -243,21 +350,21 @@
   <div class="estados-simples">
     <div class="estado-simples sc" data-sigla="SC">
       <div class="estado-flag">
-        <img src="img/flag-sc.webp" alt="Bandeira de Santa Catarina - Estado atendido" style="width:100%;height:100%;object-fit:cover;">
+        <img loading="lazy" src="flag-sc.webp" alt="Bandeira de Santa Catarina - Estado atendido" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="estado-sigla-grande">SC</div>
       <div class="estado-nome-grande">Santa Catarina</div>
     </div>
     <div class="estado-simples pr" data-sigla="PR">
       <div class="estado-flag">
-        <img src="img/flag-pr.webp" alt="Bandeira do Paraná - Estado atendido" style="width:100%;height:100%;object-fit:cover;">
+        <img loading="lazy" src="flag-pr.webp" alt="Bandeira do Paraná - Estado atendido" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="estado-sigla-grande">PR</div>
       <div class="estado-nome-grande">Paraná</div>
     </div>
     <div class="estado-simples sp" data-sigla="SP">
       <div class="estado-flag">
-        <img src="img/flag-sp.svg" alt="Bandeira de São Paulo - Estado atendido" style="width:100%;height:100%;object-fit:cover;">
+        <img loading="lazy" src="flag-sp.svg" alt="Bandeira de São Paulo - Estado atendido" style="width:100%;height:100%;object-fit:cover;">
       </div>
       <div class="estado-sigla-grande">SP</div>
       <div class="estado-nome-grande">São Paulo</div>
@@ -600,7 +707,7 @@
 
     <!-- Coluna 1: Marca -->
     <div class="footer-brand">
-      <img src="img/logo-bischof.webp" alt="Bischof Distribuidora" class="footer-logo">
+      <img loading="lazy" src="img/logo-bischof.webp" alt="Bischof Distribuidora" class="footer-logo">
       <p>Distribuidora oficial Sabor do Alemão® — Joinville/SC. Salgados congelados para revendedores em SC, PR e SP.</p>
       <div class="footer-social">
         <a href="https://wa.me/5547999743400" target="_blank" aria-label="WhatsApp Bischof Distribuidora" class="footer-social-btn">💬</a>

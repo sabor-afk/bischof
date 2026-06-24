@@ -1,4 +1,21 @@
+# Google, Bing, Yahoo - indexar tudo
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Yahoo! Slurp
 User-agent: *
 Allow: /
 
-Sitemap: https://bischof.com.br/sitemap.xml
+# Disallow IA bots (OpenAI, Anthropic, etc)
+User-agent: GPTBot
+User-agent: CCBot
+User-agent: anthropic-ai
+User-agent: Claude-Web
+Disallow: /
+
+# Crawl delay
+User-agent: *
+Crawl-delay: 1
+Request-rate: 1/1s
+
+# Sitemap
+Sitemap: https://sabor-afk.github.io/bischoff/sitemap.xml
