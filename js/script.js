@@ -1,18 +1,3 @@
-{
-  "@context":"https://schema.org",
-  "@type":"LocalBusiness",
-  "name":"Bischof Distribuidora",
-  "address":{
-    "@type":"PostalAddress",
-    "addressLocality":"Joinville",
-    "addressRegion":"SC",
-    "addressCountry":"BR"
-  },
-  "telephone":"+554799743400"
-}
-
-
-
   // Mostrar coluna direita só no desktop
   function checkHeroRight() {
     const el = document.getElementById('heroRight');
@@ -85,6 +70,27 @@ document.addEventListener("keydown", function(e) {
 // Menu mobile — fechar ao clicar nos links
 document.querySelectorAll('[data-action="close-menu"]').forEach(el => {
     el.addEventListener('click', closeMenu);
+});
+
+// FAQ — accordion
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const toggle = this.getAttribute('data-toggle');
+            const answer = document.getElementById(toggle);
+            const isOpen = answer.style.display !== 'none';
+            
+            // Fechar todos
+            document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+            document.querySelectorAll('.faq-question').forEach(b => b.classList.remove('open'));
+            
+            // Abrir o clicado
+            if (!isOpen) {
+                answer.style.display = 'block';
+                this.classList.add('open');
+            }
+        });
+    });
 });
 
 // Formulário pedido — submit
