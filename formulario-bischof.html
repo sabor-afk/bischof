@@ -1,0 +1,514 @@
+<!-- FORMULÁRIO BISCHOF - NETLIFY FORMS VERSION -->
+<!-- Este arquivo substitui o formulario-bisch of-custom.html -->
+<!-- Netlify vai interceptar e armazenar submissões automaticamente -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 🔐 META TAGS DE SEGURANÇA -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://formspree.io https://api.formspree.io; frame-src 'self'; base-uri 'self'; form-action 'self' https://formspree.io;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <title>Formulário Bischof - Solicitar Informações</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f4c3a 0%, #1a6a52 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #0a2c1a;
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #10b981;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #a0aec0;
+            font-size: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            color: #e2e8f0;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: #1a3a2e;
+            border: 1px solid #10b981;
+            border-radius: 6px;
+            color: #e2e8f0;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #059669;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+            background: #245a4a;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #10b981;
+        }
+        
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            color: #a0aec0;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 35px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        
+        .btn-submit:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-reset {
+            background: transparent;
+            color: #10b981;
+            border: 1px solid #10b981;
+        }
+        
+        .btn-reset:hover {
+            background: rgba(16, 185, 129, 0.1);
+        }
+        
+        .btn-whatsapp {
+            display: inline-block;
+            background: linear-gradient(135deg, #25D366 0%, #1BA952 100%);
+            color: white;
+            padding: 14px 40px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-whatsapp:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .security-note {
+            text-align: center;
+            color: #6b7280;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        
+        .success-message {
+            display: none;
+            background: #065f46;
+            border: 2px solid #10b981;
+            color: #a7f3d0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: slideDown 0.5s ease-out;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .success-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            animation: pulse 0.6s ease-out;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .container {
+                padding: 25px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📦 Solicitar Informações</h1>
+            <p>Bischofs Distribuidora - Produtos Exclusivos</p>
+        </div>
+        
+        <!-- ✅ FORMULÁRIO NETLIFY -->
+        <form name="bischof-formulario" method="POST" netlify netlify-honeypot="bot-field">
+            
+            <!-- Honeypot anti-spam (oculto) -->
+            <input type="hidden" name="bot-field">
+            
+            <!-- Sucesso message -->
+            <div class="success-message" id="successMessage">
+                <div class="success-icon">✅</div>
+                <div>Formulário enviado com sucesso!</div>
+                <div style="font-size: 14px; margin-top: 8px; opacity: 0.9;">
+                    Entraremos em contato em breve. Obrigado! 🙏
+                </div>
+            </div>
+            
+            <!-- INFORMAÇÕES PESSOAIS -->
+            <div class="form-group full">
+                <label for="nome">👤 Nome / Razão Social *</label>
+                <input 
+                    type="text" 
+                    name="nome" 
+                    id="nome" 
+                    required 
+                    placeholder="Ex: João Silva ou Empresa LTDA"
+                >
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="tipo-doc">Tipo de Documento *</label>
+                    <select name="tipo-documento" id="tipo-doc" required>
+                        <option value="">Selecione...</option>
+                        <option value="CPF">CPF</option>
+                        <option value="CNPJ">CNPJ</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cpf-cnpj">CPF / CNPJ *</label>
+                    <input 
+                        type="text" 
+                        name="cpf-cnpj" 
+                        id="cpf-cnpj" 
+                        required 
+                        placeholder="000.000.000-00"
+                    >
+                </div>
+            </div>
+            
+            <div class="form-group full">
+                <label for="whatsapp">📱 WhatsApp *</label>
+                <input 
+                    type="tel" 
+                    name="whatsapp" 
+                    id="whatsapp" 
+                    required 
+                    placeholder="(47) 99999-9999"
+                >
+            </div>
+            
+            <!-- LOCALIZAÇÃO -->
+            <div class="form-group full">
+                <label for="endereco">📍 Endereço / Rua *</label>
+                <input 
+                    type="text" 
+                    name="endereco" 
+                    id="endereco" 
+                    required 
+                    placeholder="Ex: Rua Principal, 123"
+                >
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="numero">Número *</label>
+                    <input 
+                        type="text" 
+                        name="numero" 
+                        id="numero" 
+                        required 
+                        placeholder="123"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="complemento">Complemento</label>
+                    <input 
+                        type="text" 
+                        name="complemento" 
+                        id="complemento" 
+                        placeholder="Apto, sala, etc"
+                    >
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="cidade">Cidade *</label>
+                    <input 
+                        type="text" 
+                        name="cidade" 
+                        id="cidade" 
+                        required 
+                        placeholder="Joinville"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="estado">Estado *</label>
+                    <select name="estado" id="estado" required>
+                        <option value="">Selecione...</option>
+                        <option value="SC">SC (Santa Catarina)</option>
+                        <option value="SP">SP (São Paulo)</option>
+                        <option value="PR">PR (Paraná)</option>
+                        <option value="RS">RS (Rio Grande do Sul)</option>
+                        <option value="RJ">RJ (Rio de Janeiro)</option>
+                        <option value="MG">MG (Minas Gerais)</option>
+                        <option value="BA">BA (Bahia)</option>
+                        <option value="PE">PE (Pernambuco)</option>
+                        <option value="CE">CE (Ceará)</option>
+                        <option value="DF">DF (Distrito Federal)</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- NEGÓCIO -->
+            <div class="form-group full">
+                <label for="tipo-negocio">🏪 Tipo de Negócio *</label>
+                <select name="tipo-negocio" id="tipo-negocio" required>
+                    <option value="">Selecione...</option>
+                    <option value="Restaurante">Restaurante</option>
+                    <option value="Padaria">Padaria</option>
+                    <option value="Confeitaria">Confeitaria</option>
+                    <option value="Lanchonete">Lanchonete</option>
+                    <option value="Bar">Bar</option>
+                    <option value="Supermercado">Supermercado</option>
+                    <option value="Distribuidora">Distribuidora</option>
+                    <option value="Outro">Outro</option>
+                </select>
+            </div>
+            
+            <!-- MARCAS DE INTERESSE -->
+            <div class="form-group full">
+                <label>🔖 Marcas de Interesse *</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="marcas" id="marca1" value="Sabor do Alemão">
+                        <label for="marca1">Sabor do Alemão</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="marcas" id="marca2" value="Delicks">
+                        <label for="marca2">Delicks</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="marcas" id="marca3" value="Serra da Canastra">
+                        <label for="marca3">Serra da Canastra</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="marcas" id="marca4" value="Mein Haus">
+                        <label for="marca4">Mein Haus</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="marcas" id="marca5" value="DaNiza">
+                        <label for="marca5">DaNiza</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="marcas" id="marca6" value="Todas">
+                        <label for="marca6">Todas</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- OBSERVAÇÕES -->
+            <div class="form-group full">
+                <label for="observacoes">📝 Observações</label>
+                <textarea 
+                    name="observacoes" 
+                    id="observacoes" 
+                    placeholder="Alguma informação adicional que gostaria de compartilhar?"
+                ></textarea>
+            </div>
+            
+            <!-- BOTÕES -->
+            <div class="button-group">
+                <button type="submit" class="btn-submit">📤 Enviar Formulário</button>
+                <button type="reset" class="btn-reset">🔄 Limpar</button>
+            </div>
+            
+            <!-- SEGURANÇA -->
+            <div class="security-note">
+                ✅ Dados com segurança | 🔒 Nunca compartilhamos
+            </div>
+        </form>
+        
+        <!-- SEPARADOR -->
+        <div style="text-align: center; margin: 30px 0; color: #6b7280; font-size: 14px;">
+            ou
+        </div>
+        
+        <!-- BOTÃO WHATSAPP -->
+        <div style="text-align: center;">
+            <p style="color: #a0aec0; margin-bottom: 15px; font-size: 14px;">
+                Prefere falar direto?
+            </p>
+            <a href="https://wa.me/5547999743400?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20os%20produtos%20da%20Bischof%20Distribuidora.%20Qual%20é%20o%20próximo%20passo?" 
+               target="_blank" 
+               class="btn-whatsapp">
+                💬 Chat no WhatsApp
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Capturar o submit do formulário
+        const form = document.querySelector('form');
+        const successMessage = document.getElementById('successMessage');
+        
+        form.addEventListener('submit', function(e) {
+            // Não prevenir o comportamento padrão do Netlify
+            // Mas preparar a mensagem de sucesso
+            
+            // Mostrar mensagem de sucesso após um pequeno delay
+            setTimeout(() => {
+                successMessage.classList.add('show');
+                
+                // Scroll para a mensagem
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Limpar formulário
+                form.reset();
+                
+                // Esconder mensagem após 8 segundos
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 8000);
+            }, 500);
+        });
+        
+        // Adicionar logging
+        console.log('✅ Formulário pronto com Netlify Forms + Slack Integration');
+    </script>
+</body>
+</html>
