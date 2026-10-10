@@ -11,10 +11,10 @@ Atualizado em 10/10/2026. Preparação iniciada **sem mudar a branch `main` nem 
 - Não configurar sitemap nem canonical de domínio não confirmado na prévia.
 
 ## Identidade e domínio — confirmar antes de alterar o site
-- Confirmar grafia do domínio fornecido pelo responsável: `bichoff.com.br` (pode diferir do nome Bischof).
-- Confirmar titularidade e acesso de DNS, `www` versus sem `www`, URLs oficiais e números de atendimento.
+- **Grafia confirmada pelo responsável em 10/10/2026: `bischof.com.br`.** Não configurar o domínio nem trocar os metadados da homologação até o lançamento.
+- Confirmar titularidade e acesso ao DNS. URL canônica proposta para lançamento: `https://bischof.com.br/` (sem `www`), com redirecionamento da variante `www` após configurar o domínio; validar essa preferência com o responsável.
 - Confirmar dados institucionais e informações no `LocalBusiness` (endereço, fundação, horários se públicos).
-- Definir endereço canônico HTTPS no domínio oficial; testar SSL e redirecionar a outra variante.
+- Preparados templates de sitemap, robots e metadados em `docs/seo-producao/` (não publicados). Ao lançar, testar SSL e redirecionar a variante secundária.
 
 ## SEO técnico — preparar na branch, ativar só no lançamento
 1. `<title>`, meta description, cabeçalhos H1/H2, texto alternativo das imagens e links internos.
@@ -24,10 +24,10 @@ Atualizado em 10/10/2026. Preparação iniciada **sem mudar a branch `main` nem 
 5. Sitemap XML apenas de páginas públicas canônicas; `robots.txt` final com link do sitemap.
 6. Ao lançar: trocar os `og:url`, `og:image`, JSON-LD `url` e canônicos, e só então remover TODOS os `noindex`.
 7. Testar HTTP 200/301/404, cache, segurança, mobile, WCAG 2.2 AA e Core Web Vitals.
-8. Garantir que `bischof.pages.dev` não dispute indexação com o domínio principal; mantê-lo `noindex` após lançamento, com estratégia de implantação separada se necessário.
+8. Garantir que `bischof.pages.dev` não dispute indexação com o domínio principal: configurar redirecionamento permanente por hostname ou uma política `noindex` específica para o hostname de prévia; a regra atual global em `_headers` não distingue hostnames e **não pode simplesmente ser removida sem planejamento**.
 
 ## Search Console e Google
-- Adicionar a propriedade do domínio oficial no Search Console por DNS TXT quando houver acesso; isso pode ser feito antes da publicação.
+- Adicionar a propriedade do domínio `bischof.com.br` no Search Console por DNS TXT quando houver acesso; isso pode ser feito antes da publicação, sem retirar o `noindex` nem fazer redirecionamentos.
 - Migrar a propriedade do GitHub Pages com mapa de URLs e redirecionamentos 301/308, quando autorizada alteração do site antigo.
 - Depois do lançamento enviar o novo sitemap, verificar URL e monitorar cobertura, consultas e eventuais problemas.
 - Não exigir indexação imediata: decisão e prazo são do Google.
@@ -46,5 +46,5 @@ Atualizado em 10/10/2026. Preparação iniciada **sem mudar a branch `main` nem 
 - Monitorar erros de deploy no GitHub Actions e ter procedimento de reversão.
 
 ## Gate para lançamento
-A publicação oficial depende de: grafia e posse do domínio, DNS/SSL, aprovação comercial, SEO sem `noindex` no domínio oficial, analytics/privacy, Search Console, redirecionamentos do site antigo, QA, aprovação final.
+A publicação oficial depende de: posse do domínio `bischof.com.br`, acesso ao DNS e SSL, aprovação comercial, SEO sem `noindex` apenas no domínio oficial, analytics/privacy, Search Console, tratamento próprio do hostname de prévia, estratégia factível para links do site antigo, QA, aprovação final.
 **Nunca alterar `main` por este plano sem autorização explícita.**

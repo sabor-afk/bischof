@@ -1,0 +1,5 @@
+# TEMPLATE DE PRODUCAO: publicar somente no lancamento de bischof.com.br
+User-agent: *
+Allow: /
+
+Sitemap: https://bischof.com.br/sitemap.xml
