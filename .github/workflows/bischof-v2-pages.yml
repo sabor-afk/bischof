@@ -29,10 +29,11 @@ jobs:
           test -s site-v2/index.html
           test -s site-v2/formulario-bischof.html
           test -s site-v2/privacidade.html
+          test -s site-v2/404.html
           test -s site-v2/js/site-v2.mjs
           mkdir -p dist/img dist/pdf
           cp -R site-v2/. dist/
-          for logo in logo-sabor-do-alemao.webp logo-delicks.webp logo-disk-salgadinhos.webp logo-serra-da-canastra.webp logo-daniza.webp logo-mein-haus.webp logo-italiana-gourmet.webp; do
+          for logo in logo-sabor-do-alemao.webp logo-delicks.webp logo-disk-salgadinhos.webp logo-serra-da-canastra.webp logo-daniza.webp logo-mein-haus.webp logo-italiana-gourmet.webp og-image-bischof.webp; do
             test -s "img/$logo"
             cp "img/$logo" "dist/img/$logo"
           done
@@ -40,6 +41,9 @@ jobs:
           test -s pdf/catalogo-bischof.pdf
           cp catalogo-interativo.html dist/
           cp pdf/catalogo-bischof.pdf dist/pdf/
+          test -s dist/img/og-image-bischof.webp
+          grep -q 'X-Robots-Tag: noindex' dist/_headers
+          grep -q 'content="noindex,nofollow,noarchive"' dist/index.html
           for js in dist/js/*.mjs; do node --check "$js"; done
           python3 - <<'PY'
           from html.parser import HTMLParser
@@ -57,7 +61,7 @@ jobs:
                           u = urlsplit(v)
                           if not u.scheme and not u.netloc and u.path and not u.path.startswith(("#", "data:", "mailto:", "tel:")):
                               self.refs.append(unquote(u.path.lstrip("/")))
-          for path in (root / "index.html", root / "formulario-bischof.html", root / "privacidade.html"):
+          for path in (root / "index.html", root / "formulario-bischof.html", root / "privacidade.html", root / "404.html"):
               parser = LocalRefs()
               parser.feed(path.read_text(encoding="utf-8"))
               missing = [s for s in parser.refs if not (root / s).is_file() and not (path.parent / s).is_file()]
