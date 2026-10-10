@@ -1,0 +1,75 @@
+name: Bischof V2 | Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - site-bischof-v2
+    paths:
+      - "site-v2/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bischof-v2-pages
+  cancel-in-progress: false
+
+jobs:
+  publicar-v2:
+    name: Validar e publicar V2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obter branch de testes
+        uses: actions/checkout@v4
+
+      - name: Preparar site com arquivos oficiais
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s site-v2/index.html
+          test -s site-v2/formulario-bischof.html
+          test -s site-v2/privacidade.html
+          test -s site-v2/js/site-v2.mjs
+          mkdir -p dist/img dist/pdf
+          cp -R site-v2/. dist/
+          for logo in logo-sabor-do-alemao.webp logo-delicks.webp logo-disk-salgadinhos.webp logo-serra-da-canastra.webp logo-daniza.webp logo-mein-haus.webp logo-italiana-gourmet.webp; do
+            test -s "img/$logo"
+            cp "img/$logo" "dist/img/$logo"
+          done
+          test -s catalogo-interativo.html
+          test -s pdf/catalogo-bischof.pdf
+          cp catalogo-interativo.html dist/
+          cp pdf/catalogo-bischof.pdf dist/pdf/
+          for js in dist/js/*.mjs; do node --check "$js"; done
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import urlsplit, unquote
+
+          root = Path("dist")
+          class LocalRefs(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.refs = []
+              def handle_starttag(self, tag, attrs):
+                  for k, v in attrs:
+                      if k in {"src", "href"} and v:
+                          u = urlsplit(v)
+                          if not u.scheme and not u.netloc and u.path and not u.path.startswith(("#", "data:", "mailto:", "tel:")):
+                              self.refs.append(unquote(u.path.lstrip("/")))
+          for path in (root / "index.html", root / "formulario-bischof.html", root / "privacidade.html"):
+              parser = LocalRefs()
+              parser.feed(path.read_text(encoding="utf-8"))
+              missing = [s for s in parser.refs if not (root / s).is_file() and not (path.parent / s).is_file()]
+              if missing:
+                  raise SystemExit(f"{path}: caminhos ausentes {missing}")
+          print("V2: paginas, recursos locais e sintaxe JS validados.")
+          PY
+
+      - name: Publicar no projeto Cloudflare existente
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4"
+          command: pages deploy dist --project-name=bischof --branch=${{ vars.BISCHOF_PAGES_PRODUCTION_BRANCH || 'main' }}
