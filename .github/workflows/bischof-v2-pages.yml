@@ -60,7 +60,9 @@ jobs:
                       if k in {"src", "href"} and v:
                           u = urlsplit(v)
                           if not u.scheme and not u.netloc and u.path and not u.path.startswith(("#", "data:", "mailto:", "tel:")):
-                              self.refs.append(unquote(u.path.lstrip("/")))
+                              normalized = unquote(u.path.lstrip("/"))
+                          if normalized:
+                              self.refs.append(normalized)
           for path in (root / "index.html", root / "formulario-bischof.html", root / "privacidade.html", root / "404.html"):
               parser = LocalRefs()
               parser.feed(path.read_text(encoding="utf-8"))
