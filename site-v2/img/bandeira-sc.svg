@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 80" role="img" aria-label="Bandeira de Santa Catarina">
+  <title>Bandeira de Santa Catarina</title>
+  <desc>Versão vetorial simplificada para ícone: faixas vermelha, branca e vermelha, losango verde e brasão central.</desc>
+  <rect width="110" height="80" fill="#df132a"/>
+  <rect y="27" width="110" height="26" fill="#fff"/>
+  <path d="M55 8 101 40 55 72 9 40Z" fill="#8fb83c"/>
+  <g transform="translate(55 40)">
+    <circle r="16" fill="#fff" stroke="#dce9db" stroke-width="1.1"/>
+    <path d="M-12 -4 Q-17 3 -10 12 M12 -4 Q17 3 10 12" fill="none" stroke="#307e43" stroke-width="2.8" stroke-linecap="round"/>
+    <path d="M-11 8 -16 7 M-11 3 -16 1 M11 8 16 7 M11 3 16 1" stroke="#307e43" stroke-width="1.2"/>
+    <path d="M0 -15 2.8 -9 9 -8 4 -4 5 2 0 -1 -5 2 -4 -4 -9 -8 -2.8 -9Z" fill="#dba12e"/>
+    <path d="M-8 -4 0 -8 8 -4 9 4 0 11 -9 4Z" fill="#eee9c4" stroke="#b78a30" stroke-width="1"/>
+    <path d="M0 -7v16m-6 -9 12 0" stroke="#c08b26" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M-9 -4Q0 -12 9 -4" fill="none" stroke="#b52330" stroke-width="3"/>
+    <path d="M-7 11Q0 15 7 11" fill="none" stroke="#b52330" stroke-width="2"/>
+  </g>
+</svg>

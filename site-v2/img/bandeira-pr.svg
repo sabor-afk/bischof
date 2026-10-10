@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 84" role="img" aria-label="Bandeira do Paraná">
+  <title>Bandeira do Paraná</title>
+  <desc>Versão vetorial simplificada para ícone: campo verde, faixa diagonal branca e círculo azul com estrelas.</desc>
+  <rect width="120" height="84" fill="#038648"/>
+  <path d="M0 0H38L120 47V84H82L0 38Z" fill="#fff"/>
+  <circle cx="60" cy="42" r="24" fill="#294a9f"/>
+  <path d="M36 36Q61 34 84 47L83 55Q61 42 36 45Z" fill="#fff"/>
+  <text x="60" y="45.5" fill="#02884a" font-family="Arial,sans-serif" font-weight="800" font-size="8.5" text-anchor="middle" transform="rotate(7 60 42)">PARANÁ</text>
+  <g fill="#fff">
+    <path d="M60 23 62 29 68 29 63 33 65 39 60 35 55 39 57 33 52 29 58 29Z"/>
+    <path d="M47 49 48.2 52 51.5 52 49 54 50 57 47 55 44 57 45 54 42.5 52 46 52Z"/>
+    <path d="M72 49 73.2 52 76.5 52 74 54 75 57 72 55 69 57 70 54 67.5 52 71 52Z"/>
+    <circle cx="59" cy="58" r="2.3"/>
+  </g>
+  <path d="M33 47q-4 18 17 25M87 48q5 18-17 25" fill="none" stroke="#078745" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M35 51 26 46M36 56 27 54M39 61 31 61M85 52 94 48M84 58 93 56M80 64 89 63" fill="none" stroke="#078745" stroke-width="2" stroke-linecap="round"/>
+</svg>

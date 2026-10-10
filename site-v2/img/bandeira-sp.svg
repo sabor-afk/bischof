@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" role="img" aria-label="Bandeira de São Paulo">
+  <title>Bandeira de São Paulo</title>
+  <desc>Versão vetorial simplificada para ícone: faixas pretas e brancas, cantão vermelho com estrelas e mapa do Brasil.</desc>
+  <rect width="120" height="80" fill="#fff"/>
+  <path d="M0 0H120V8H0Zm0 16H120v8H0Zm0 32H120v8H0Zm0 16H120v8H0Z" fill="#171717"/>
+  <path d="M0 32H120V40H0Z" fill="#171717"/>
+  <rect width="47" height="34" fill="#ca1530"/>
+  <g fill="#f7e547">
+    <path d="m7 3 1.5 4.3H13l-3.7 2.7L10.8 14 7 11.5 3.2 14 4.7 10 1 7.3h4.5Z"/>
+    <path d="m40 3 1.5 4.3H46l-3.7 2.7L43.8 14 40 11.5 36.2 14 37.7 10 34 7.3h4.5Z"/>
+    <path d="m7 21 1.5 4.3H13L9.3 28 10.8 32 7 29.5 3.2 32 4.7 28 1 25.3h4.5Z"/>
+    <path d="m40 21 1.5 4.3H46L42.3 28 43.8 32 40 29.5 36.2 32 37.7 28 34 25.3h4.5Z"/>
+  </g>
+  <circle cx="23.5" cy="17" r="12.5" fill="#fff"/>
+  <path d="m17 8 5-1 4 2 1 4 3 1-2 4 1 4-4 1-2 4-4-3-3-1 1-4-3-2 1-4Z" fill="#2456a5"/>
+</svg>

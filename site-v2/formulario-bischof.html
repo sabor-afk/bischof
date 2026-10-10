@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#062e2e">
+<title>Seja cliente | Bischof Distribuidora</title><meta name="description" content="Solicite atendimento comercial da Bischof Distribuidora. Consulte sua cidade, escolha as linhas de salgados e converse pelo WhatsApp.">
+<link rel="icon" type="image/webp" href="img/logo-bischof-oficial.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/site-v2.css"><link rel="stylesheet" href="css/formulario-v2.css"><script type="module" src="js/site-v2.mjs"></script>
+  <meta name="robots" content="noindex,nofollow,noarchive">
+</head>
+<body>
+<header class="site-header is-scrolled"><div class="container nav-wrap"><a class="brand-home" href="index.html#inicio"><img src="img/logo-bischof-oficial.webp" alt="Bischof Distribuidora" width="177" height="86"></a><a class="back-site" href="index.html">← Voltar ao site</a></div></header>
+<main class="form-main"><div class="container form-layout">
+<aside class="form-aside" aria-label="Sobre o atendimento comercial"><p class="section-kicker"><span class="kicker-dot"></span> SEJA CLIENTE BISCHOF</p><h1>Seu próximo<br><span>bom negócio</span><br>começa aqui.</h1><p>Conte um pouco sobre seu estabelecimento. Em poucos passos, você prepara sua mensagem para nossa equipe comercial.</p>
+<div class="form-points" aria-label="Como funciona"><div><strong>01</strong><span>Conte sobre seu negócio</span></div><div><strong>02</strong><span>Veja a cobertura da sua cidade</span></div><div><strong>03</strong><span>Revise e envie pelo WhatsApp</span></div></div>
+<div class="form-aside-foot"><span class="online-icon" aria-hidden="true">✳</span><div><strong>Atendimento humanizado</strong><p>Você conversa diretamente com nossa equipe. Sem cadastro obrigatório ou envio automático de dados.</p></div></div></aside>
+<section class="lead-card" aria-label="Formulário comercial"><div class="lead-header"><span>CONTATO COMERCIAL</span><span>01 / 02 · INFORMAÇÕES</span></div><h2>Vamos conversar?</h2><p class="lead-subtitle">Preencha os dados do seu estabelecimento e confira sua mensagem antes de conversar com a equipe.</p>
+<form data-lead-form id="leadForm">
+<div class="lead-field"><label for="nome">Seu nome ou nome do estabelecimento <span aria-hidden="true">*</span></label><input id="nome" name="nome" autocomplete="organization" placeholder="Ex.: Padaria da Ana" required maxlength="110"></div>
+<fieldset class="address-card" data-address-section aria-describedby="address-hint">
+<legend><span class="address-icon" aria-hidden="true">⌖</span> Endereço do estabelecimento</legend>
+<p class="address-hint" id="address-hint">Informe onde sua empresa fica localizada. Nossa equipe usa esses dados para orientar o atendimento e as entregas.</p>
+<div class="lead-field-row address-street-row">
+<div class="lead-field"><label for="logradouro">Rua, avenida ou estrada <span aria-hidden="true">*</span></label><input id="logradouro" name="logradouro" autocomplete="street-address" placeholder="Ex.: Rua das Flores" required maxlength="120"></div>
+<div class="lead-field"><label for="numero">Número <span aria-hidden="true">*</span></label><input id="numero" name="numero" autocomplete="address-line2" placeholder="Ex.: 320 ou S/N" required maxlength="18"></div>
+</div>
+<div class="lead-field-row address-neighborhood-row">
+<div class="lead-field"><label for="bairro">Bairro <span aria-hidden="true">*</span></label><input id="bairro" name="bairro" placeholder="Ex.: Centro" required maxlength="90"></div>
+<div class="lead-field"><label for="cep">CEP <span aria-hidden="true">*</span></label><input id="cep" name="cep" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="Ex.: 89210-000" required maxlength="9" pattern="[0-9]{5}-?[0-9]{3}" title="Digite os 8 números do CEP (ex.: 89210-000)."></div>
+</div>
+<div class="lead-field-row address-city-row"><div class="lead-field"><label for="cidade">Cidade <span aria-hidden="true">*</span></label><input id="cidade" name="cidade" autocomplete="address-level2" placeholder="Ex.: Joinville" list="cidadesCobertura" required maxlength="80"><datalist id="cidadesCobertura"></datalist></div>
+<div class="lead-field"><label for="estado">Estado <span aria-hidden="true">*</span></label><select id="estado" name="estado" autocomplete="address-level1" required><option value="">Selecione</option><option value="SC">Santa Catarina</option><option value="PR">Paraná</option><option value="SP">São Paulo</option><option value="Outro">Outra região</option></select></div></div>
+</fieldset>
+<p class="lead-coverage-notice" data-lead-coverage data-status="empty" role="status" aria-live="polite">Digite sua cidade e selecione o estado para consultar a cobertura.</p>
+<div class="lead-field-row"><div class="lead-field"><label for="negocio">Tipo de negócio <small>Opcional</small></label><select id="negocio" name="negocio"><option value="">Selecione</option><option value="Padaria">Padaria</option><option value="Lanchonete">Lanchonete</option><option value="Mercado">Mercado</option><option value="Conveniência">Conveniência</option><option value="Restaurante">Restaurante</option><option value="Revenda/Distribuição">Revenda/Distribuição</option><option value="Outro">Outro</option></select></div>
+<div class="lead-field"><label for="whatsapp">Seu telefone <small>Opcional</small></label><input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(47) 99999-9999" pattern="[0-9()+ .-]{10,20}" maxlength="20"></div></div>
+<fieldset class="interest-group"><legend>Quais produtos interessam? <small>Opcional</small></legend><div class="interest-options"><label class="interest-option"><input type="checkbox" name="interesse" value="Para fritar"><span aria-hidden="true" class="interest-symbol">♨</span><span>Para fritar</span></label><label class="interest-option"><input type="checkbox" name="interesse" value="Para assar"><span aria-hidden="true" class="interest-symbol">◒</span><span>Para assar</span></label><label class="interest-option"><input type="checkbox" name="interesse" value="Quero conhecer o catálogo"><span aria-hidden="true" class="interest-symbol">▤</span><span>Ver opções</span></label></div></fieldset>
+<div class="lead-field"><label for="mensagem">Quer contar mais alguma coisa? <small>Opcional</small></label><textarea id="mensagem" name="mensagem" rows="3" maxlength="650" placeholder="Ex.: Tenho interesse em abastecimento para uma conveniência..."></textarea></div>
+<div class="lead-consent"><span aria-hidden="true">✳</span><p>Esta página <strong>não envia seus dados automaticamente</strong>. A mensagem será preparada para sua revisão, e você confirma o envio no WhatsApp. Leia nossa <a href="privacidade.html">Política de Privacidade</a>.</p></div>
+<button type="submit" class="btn btn-primary lead-submit">Revisar mensagem e continuar <span aria-hidden="true">↗</span></button><p class="lead-submit-caption">Sem cadastro e sem compromisso. Nossa equipe confirma condições e programação.</p>
+</form>
+<section class="lead-result" data-lead-result hidden aria-live="polite"><span class="result-eyebrow">02 / 02 — ÚLTIMO PASSO</span><h3>Está tudo certo?</h3><p class="lead-result-desc">Confira sua mensagem antes de abrir a conversa.</p><pre data-message-preview tabindex="0"></pre><div class="lead-result-actions"><a data-whatsapp-link class="btn btn-primary" href="https://wa.me/5547999743400" target="_blank" rel="noopener noreferrer">Continuar no WhatsApp ↗</a><button type="button" data-copy-message class="copy-message">Copiar texto</button><button type="button" data-edit-lead class="copy-message">Editar dados</button></div><p class="result-clarify"><strong>Confirme o envio no WhatsApp. O contato só será recebido após você enviar a mensagem dentro da conversa.</strong></p><p class="copy-status" data-copy-status aria-live="polite"></p></section>
+<noscript><p class="nojs">Para preparar uma mensagem personalizada, ative o JavaScript. Ou <a href="https://wa.me/5547999743400">converse diretamente com a Bischof pelo WhatsApp</a>.</p></noscript>
+</section></div></main>
+<footer class="minimal-footer"><div class="container"><span>© 2026 Bischof Distribuidora</span><a href="privacidade.html">Política de Privacidade</a><a href="index.html">Voltar ao início</a></div></footer>
+</body></html>

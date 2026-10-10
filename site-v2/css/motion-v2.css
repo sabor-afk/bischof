@@ -1,0 +1,200 @@
+/* BISCHOF EXPERIENCE — continuous chapters on the actual site, not a separate demo.
+   The scroll engine only writes scoped CSS variables on [data-journey].
+   Everything is readable with CSS alone: no data is hidden behind JS initialization. */
+:root{--experience-accent:#5ee4ca;--experience-ink:#052f2b}
+[data-journey]{--m-progress:0;--m-shift:0px;--m-turn:0deg;--m-depth:0px;--m-entry:1;--m-exit:0;position:relative}
+.journey-index{font:700 10px/1 'Outfit',Arial,sans-serif;letter-spacing:.07em;opacity:.42;margin-left:6px;flex-shrink:0}
+/* Cross-section color bridges live *behind* content, never obscure clicks. */
+.section-intro,.brands-section,.coverage-section,.faq-section{isolation:isolate}
+.section-intro::before,.brands-section::after,.coverage-section::before{content:"";position:absolute;left:0;right:0;top:0;height:92px;pointer-events:none;z-index:0}
+.section-intro::before{background:linear-gradient(to bottom,rgba(3,46,44,.12),transparent)}
+.brands-section::after{background:linear-gradient(to bottom,rgba(8,62,59,.10),transparent)}
+.coverage-section::before{background:linear-gradient(to bottom,rgba(4,49,47,.13),transparent)}
+.section-intro>.container,.brands-section>.container,.coverage-section>.container{position:relative;z-index:1}
+.catalog-section{isolation:isolate}
+.catalog-section::after{content:"";position:absolute;left:0;right:0;top:0;height:82px;pointer-events:none;background:linear-gradient(to bottom,rgba(237,244,237,.10),transparent);z-index:0}
+.catalog-section>.container{z-index:1}
+.hero-bottom-line{background:linear-gradient(90deg,transparent,#60dfc7,transparent)}
+@media(min-width:1024px){.hero-visual{margin-right:-1vw}}
+/* A motion rail motif makes the story coherent without creating a navigation overlay. */
+.section-intro .section-kicker,.brands-section .section-kicker,.catalog-section .section-kicker,.coverage-section .section-kicker,.contact-section .section-kicker{position:relative;z-index:1}
+.benefit-top,.brand-card .brand-logo-stage,.brand-feature .brand-logo-stage,.catalog-image-frame,.coverage-section .state-card,.contact-symbol{transform-origin:50% 50%;backface-visibility:hidden}
+.catalog-visual,.hero-visual{perspective:1250px;transform-style:preserve-3d}
+/* Decorative stylized shipping lanes. Not a real map or a claim of precise routing. */
+.coverage-cards{position:relative;isolation:isolate}
+.coverage-route-art{position:absolute;inset:-75px -27px;z-index:-1;pointer-events:none;overflow:hidden}
+.route-orbit{position:absolute;border-radius:50%;border:1px solid rgba(19,151,128,.26);width:310px;height:310px;top:0;right:-95px;transform:rotate(-24deg)}
+.orbit-inner{width:205px;height:205px;top:55px;right:-50px;border-color:rgba(12,159,135,.18)}
+.route-beam{position:absolute;top:51%;left:2%;width:96%;height:2px;background:repeating-linear-gradient(90deg,#0da895 0 16px,transparent 16px 26px);box-shadow:0 0 20px rgba(2,158,128,.35);transform-origin:left;transform:scaleX(var(--m-route-draw,1));opacity:.7}
+.route-ping{position:absolute;top:calc(51% - 5px);left:2%;height:12px;width:12px;border-radius:50%;background:#16a98d;box-shadow:0 0 0 7px rgba(23,194,164,.12)}
+.coverage-cards .state-card{z-index:1}
+/* Lightweight interaction when pointer is precise. Keep text perfectly flat. */
+@media(hover:hover) and (pointer:fine){
+  .brand-card:hover,.benefit-card:hover{box-shadow:0 24px 45px rgba(2,50,44,.10)}
+  .brand-card:hover .brand-logo-stage{filter:brightness(1.06)}
+}
+@media (min-width:768px) and (min-height:540px) and (prefers-reduced-motion:no-preference){
+  /* Scroll transforms have no opacity on headings/buttons/labels, so navigation stays usable. */
+  body.has-site-motion .hero .hero-photo[data-truck-motion]{
+    transform:translate3d(var(--m-truck-x,0px),var(--m-truck-y,0px),0)
+      rotateY(var(--m-truck-rotate,0deg)) rotate(-1.2deg) scale(var(--m-truck-scale,1));
+    transition:filter .28s ease;will-change:transform
+  }
+  body.has-site-motion .hero-grid-lines{
+    transform:translate3d(0,calc(var(--m-shift,0px) * .5),0);
+    will-change:transform
+  }
+  body.has-site-motion .photo-halo{
+    transform:translate3d(calc(var(--m-shift,0px) * -.6),calc(var(--m-shift,0px) * 1.5),0);
+  }
+  body.has-site-motion .hero-visual .hero-photo-tag{transform:translate3d(0,calc(var(--m-shift,0px) * -.45),18px)}
+  body.has-site-motion .section-intro .benefit-card .benefit-symbol{
+    transform:perspective(700px) translate3d(0,calc(var(--m-shift,0px) * var(--card-factor,1)),var(--m-depth,0px))
+      rotateY(var(--m-turn,0deg));
+    box-shadow:0 14px 35px rgba(4,136,117,.11)
+  }
+  .benefit-card:nth-child(2){--card-factor:-.75}
+  .benefit-card:nth-child(3){--card-factor:.65}
+  .benefit-card:nth-child(4){--card-factor:-.5}
+  /* Static hit area (.brand-slot) prevents a transforming card from cancelling pointer hover.
+     A different layer (.brand-card) rotates on mouse AND on scroll. */
+  body.has-site-motion .premium-portfolio .brand-list{
+    perspective:1400px;transform-style:preserve-3d;transform:none;
+  }
+  body.has-site-motion .premium-portfolio .brand-slot>.brand-card[data-reveal].is-visible{
+    transform:perspective(900px)
+      translate3d(0,calc(var(--m-brand-lift,0px) * var(--card-direction,1)),0)
+      rotateX(var(--tilt-x,0deg))
+      rotateY(calc(var(--tilt-y,0deg) + var(--m-brand-yaw,0deg) * var(--card-direction,1)));
+    transition:opacity .75s ease,transform .25s cubic-bezier(.18,.78,.24,1),box-shadow .25s ease;
+  }
+  .premium-portfolio .brand-slot:nth-child(2n){--card-direction:-.75}
+  .premium-portfolio .brand-slot:nth-child(3n){--card-direction:.65}
+  .premium-portfolio .brand-slot:nth-child(5n){--card-direction:-.55}
+  body.has-site-motion .brand-card .brand-logo-stage{
+    transform:translate3d(0,calc(var(--m-shift,0px) * var(--logo-factor,1)),calc(var(--m-depth,0px) * .7));
+  }
+  .brand-slot:nth-child(2n) .brand-card{--logo-factor:-.5}
+  .brand-slot:nth-child(3n) .brand-card{--logo-factor:.65}
+  body.has-site-motion .brand-feature .brand-logo-stage{
+    transform:translate3d(0,calc(var(--m-shift,0px) * -.48),calc(var(--m-depth,0px) * .6));
+  }
+  body.has-site-motion .brand-feature-glow{transform:translate3d(calc(var(--m-shift,0px) * -1.7),0,0) scale(1.14)}
+  body.has-site-motion .catalog-section .catalog-image-frame{
+    transform:perspective(1300px) rotateY(var(--m-turn,0deg))
+      translate3d(0,calc(var(--m-shift,0px) * .55),0);
+    box-shadow:0 38px 85px rgba(0,0,0,.22)
+  }
+  body.has-site-motion .catalog-image-frame img,body.has-site-motion .catalog-image-frame:hover img{
+    transform:scale(var(--m-catalog-scale,1));transition:filter .3s ease
+  }
+  body.has-site-motion .catalog-counter{position:relative}
+  body.has-site-motion .catalog-counter::before{
+    content:"";position:absolute;top:-4px;left:0;width:100%;height:2px;
+    background:linear-gradient(90deg,#72efdc,#0cac9d);
+    transform-origin:left;transform:scaleX(var(--m-progress,0));opacity:.85
+  }
+  body.has-site-motion .coverage-section .state-card{
+    transform:perspective(1100px)
+      translate3d(0,calc(var(--m-shift,0px) * var(--card-factor,1)),0)
+      rotateY(var(--m-turn,0deg));
+    transition:background .26s ease,color .26s ease,box-shadow .26s ease;
+  }
+  body.has-site-motion .coverage-section .state-card:hover{
+    transform:perspective(1100px)
+      translate3d(0,calc(var(--m-shift,0px) * var(--card-factor,1) - 7px),12px)
+      rotateY(var(--m-turn,0deg));
+  }
+  .coverage-cards .state-card:nth-of-type(2){--card-factor:-.45}
+  .coverage-cards .state-card:nth-of-type(3){--card-factor:.7}
+  body.has-site-motion .contact-symbol{
+    transform:translate3d(0,calc(var(--m-shift,0px) * -.6),0) rotateY(var(--m-turn,0deg))
+  }
+  body.has-site-motion .contact-gradient{transform:translate3d(0,calc(var(--m-shift,0px) * .4),0) scale(1.06)}
+  body.has-site-motion .statement-watermark{transform:translate3d(0,var(--m-shift,0px),0)}
+}
+/* Compact viewports do not use perspective shifts or long sticky sections. */
+@media(max-width:767px), (max-height: 539px){
+  .coverage-route-art{display:none}
+  .hero-photo[data-truck-motion]{will-change:auto!important}
+  .premium-portfolio .brand-slot>.brand-card[data-reveal].is-visible{transform:none!important}
+  [data-journey] .brand-list,[data-journey] .catalog-image-frame,[data-journey] .state-card{
+    transform:none!important
+  }
+  .journey-index{opacity:.34}
+}
+@media(prefers-reduced-motion: reduce){
+  [data-journey] *,[data-journey] *::before,[data-journey] *::after{will-change:auto!important}
+  .scroll-progress{display:none!important}
+  .coverage-route-art .route-beam{transform:scaleX(1)!important}
+  .premium-portfolio .brand-slot>.brand-card{transform:none!important;transition:none!important}
+  .hero-photo[data-truck-motion],.brand-list,.brand-logo-stage,.catalog-image-frame,
+  .catalog-image-frame img,.benefit-symbol,.state-card,.contact-symbol,.contact-gradient{
+    transform:none!important
+  }
+  .hero-photo[data-truck-motion]{transform:rotate(-1deg)!important}
+  body [data-reveal]{opacity:1!important;transform:none!important}
+}
+/* Physical 3D product-category blocks, beside the existing real food image. */
+.catalog-3d-showcase{display:none}
+@media(min-width:1024px) and (min-height:540px) and (prefers-reduced-motion:no-preference){
+ .catalog-visual{position:relative;transform-style:preserve-3d;isolation:isolate}
+ .catalog-visual-caption{bottom:25px;left:27px;top:auto;text-shadow:0 2px 8px rgba(0,0,0,.6);z-index:6;max-width:32%;line-height:1.6;font-size:10px;letter-spacing:.12em}
+ .catalog-3d-showcase{position:absolute;right:5%;bottom:72px;transform:translateZ(18px) scale(.86);transform-origin:bottom right;display:flex;align-items:center;gap:15px;isolation:isolate;perspective:850px;z-index:5;pointer-events:none}
+ .catalog-3d-showcase:before{content:'';position:absolute;inset:60% -10% -25%;background:rgba(0,0,0,.48);filter:blur(22px);border-radius:100%;transform:rotateX(64deg);z-index:-1}
+ .product-pack3d{--p-w:104px;--p-h:120px;--p-depth:24px;position:relative;width:var(--p-w);height:var(--p-h);transform-style:preserve-3d;transform:translateY(var(--p-rise,0px)) rotateY(var(--p-turn,-27deg)) rotateX(-10deg);transition:transform .25s ease-out;filter:drop-shadow(0 12px 12px rgba(1,19,19,.28))}
+ .product-pack3d .pack3d-front,.product-pack3d .pack3d-top,.product-pack3d .pack3d-side{position:absolute;box-sizing:border-box;backface-visibility:visible}
+ .product-pack3d .pack3d-front{width:100%;height:100%;background:linear-gradient(155deg,var(--pack-color,#09a393),var(--pack-deep,#07594e));color:#fff;transform:translateZ(var(--p-depth));border:1px solid rgba(255,255,255,.30);border-radius:5px;display:flex;flex-direction:column;align-items:start;justify-content:space-between;padding:15px 9px 12px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+ .pack3d-front small{font-size:8px;font-weight:800;letter-spacing:.2em;color:rgba(255,255,255,.82)}
+ .pack3d-front strong{font:bold 17px/1 'Outfit',Arial,sans-serif;letter-spacing:-.03em}
+ .pack3d-front span{font-size:23px;line-height:1;color:rgba(255,255,255,.8)}
+ .product-pack3d .pack3d-top{height:calc(var(--p-depth) * 2);width:100%;top:0;transform-origin:50% 0;transform:rotateX(90deg);background:var(--pack-lite,#68d0c0)}
+ .product-pack3d .pack3d-side{width:calc(var(--p-depth) * 2);height:100%;right:0;transform-origin:100% 50%;transform:rotateY(90deg);background:var(--pack-side,#043f39)}
+ .pack-fry{--pack-color:#00796c;--pack-deep:#043a35;--pack-lite:#53d5bf;--pack-side:#064f46;--p-rise:-10px;--p-turn:-28deg}
+ .pack-bake{--pack-color:#de9a38;--pack-deep:#95550b;--pack-lite:#f6cf7a;--pack-side:#a26617;--p-rise:-30px;--p-turn:-24deg}
+ .pack-serve{--pack-color:#087e83;--pack-deep:#064447;--pack-lite:#53b9ba;--pack-side:#075c60;--p-rise:-13px;--p-turn:-31deg}
+ body.has-site-motion .catalog-section .product-pack3d{
+   transform:translate3d(calc(var(--m-pack-sway,0px) * var(--pack-factor,1)),calc(var(--p-rise,0px) + var(--m-pack-lift,0px) * var(--pack-factor,1)),var(--m-pack-depth,0px))
+     rotateY(calc(var(--p-turn) + var(--m-pack-yaw,0deg) * var(--pack-turn-factor,1) + var(--scene-pointer-yaw,0deg)))
+     rotateX(calc(-11deg + var(--scene-pointer-pitch,0deg)));
+   transition:transform .15s ease-out
+ }
+ .pack-fry{--pack-factor:-.75;--pack-turn-factor:.95}
+ .pack-bake{--pack-factor:.55;--pack-turn-factor:-.75}
+ .pack-serve{--pack-factor:.9;--pack-turn-factor:1.1}
+ .coverage-section .coverage-cards{perspective:1100px;transform-style:preserve-3d;gap:17px}
+ .coverage-section .coverage-cards .state-card{overflow:visible;transform-style:preserve-3d;transform:rotateY(-15deg) rotateX(5deg) translateZ(12px);box-shadow:13px 13px 0 #bdd2c7,25px 25px 28px rgba(13,65,56,.18);border:1px solid #cddcd6;transition:background .3s ease,box-shadow .3s ease,transform .2s}
+ body.has-site-motion .coverage-section .coverage-cards .state-card{
+   transform:translate3d(calc(var(--m-route-slide,0px) * var(--state-factor,1)),0,var(--m-route-depth,0px))
+      rotateY(calc(-15deg + var(--m-route-yaw,0deg) * var(--state-turn,1) + var(--scene-pointer-yaw,0deg)))
+      rotateX(calc(5deg + var(--scene-pointer-pitch,0deg)));
+   transition:box-shadow .3s ease,background .3s ease,transform .16s ease-out;
+ }
+ .coverage-cards .state-card:nth-of-type(2){--state-factor:-.7;--state-turn:.9}
+ .coverage-cards .state-card:nth-of-type(3){--state-factor:.4;--state-turn:-.8}
+ .coverage-cards .state-card:nth-of-type(4){--state-factor:.8;--state-turn:1.15}
+ body.has-site-motion .coverage-section .coverage-cards .state-card:hover{
+   transform:translate3d(calc(var(--m-route-slide,0px) * var(--state-factor,1)), -10px, calc(var(--m-route-depth,0px) + 25px))
+      rotateY(calc(-8deg + var(--m-route-yaw,0deg) * var(--state-turn,1) + var(--scene-pointer-yaw,0deg)))
+      rotateX(calc(3deg + var(--scene-pointer-pitch,0deg)));
+   box-shadow:16px 16px 0 #b3d0c2,24px 30px 35px rgba(13,65,56,.23)
+ }
+ .coverage-section .coverage-cards .state-card:hover{transform:rotateY(-4deg) rotateX(1deg) translateZ(30px);box-shadow:17px 17px 0 #a8c6ba,28px 28px 38px rgba(13,65,56,.22)}
+}
+
+
+/* 3D product boxes stay inside the visual's safe area; keep the category counter visible. */
+@media (min-width:1024px) and (min-height:540px) and (prefers-reduced-motion:no-preference){
+  .catalog-visual{overflow:clip;overflow-clip-margin:0px}
+  .catalog-3d-showcase{max-width:94%}
+  .catalog-counter>span{visibility:visible}
+}
+@media (min-width:1024px) and (max-width:1199px) and (min-height:540px) and (prefers-reduced-motion:no-preference){
+  .catalog-3d-showcase{right:4%;bottom:55px;transform:translateZ(0) scale(.69)}
+}
+
+/* Mobile: no 3D compositing; make motion inexpensive on low-end phones. */
+@media (max-width:767px){
+ .product-pack3d,.coverage-route-art{display:none!important}
+ .brand-slot,.brand-card,.state-card{will-change:auto!important}
+}
