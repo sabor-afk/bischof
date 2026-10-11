@@ -32,6 +32,7 @@ jobs:
           grep -q 'noindex' site-v3/index.html
           grep -qi 'X-Robots-Tag.*noindex' site-v3/_headers
           mkdir -p dist/img dist/pdf
+          cp site-v2/img/* dist/img/
           cp -R site-v3/. dist/
           for f in logo-sabor-do-alemao.webp logo-delicks.webp logo-disk-salgadinhos.webp logo-serra-da-canastra.webp logo-daniza.webp logo-mein-haus.webp logo-italiana-gourmet.webp og-image-bischof.webp; do
             test -s "img/$f"

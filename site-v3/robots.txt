@@ -1,0 +1,4 @@
+# Site de homologacao: o noindex e aplicado por meta e cabecalho HTTP.
+# O Google precisa rastrear a pagina para reconhecer o noindex.
+User-agent: *
+Allow: /

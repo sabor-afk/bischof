@@ -1,0 +1,55 @@
+
+/* Bischof V3 — acabamento editorial sem dependências de animação */
+.v3-site .brands-section{background:#f4f5f1;padding-block:clamp(70px,9vw,125px)}
+.v3-site .premium-portfolio .section-heading{margin-bottom:34px}
+.v3-site .v3-brand-intro{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:0 2px;margin:0 0 15px;color:#335e56;letter-spacing:.12em;font:700 11px/1.5 "DM Sans",sans-serif}
+.v3-site .v3-brand-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;align-items:stretch}
+.v3-site .v3-brand-grid .brand-slot{min-width:0;display:flex;position:relative}
+.v3-site .v3-brand-grid .brand-card{position:relative;isolation:isolate;width:100%;height:auto;min-height:248px;margin:0;padding:19px 22px 20px;background:#fff;color:#173831;border:1px solid #dce7df;border-radius:17px;box-shadow:0 5px 22px rgba(7,42,34,.045);display:flex;flex-direction:column;justify-content:space-between;align-items:stretch;text-align:left;gap:0;overflow:hidden;transition:box-shadow .24s ease,transform .24s ease,border-color .24s ease}
+.v3-site .v3-brand-grid .brand-card::before{content:"";position:absolute;inset:auto 20px 0;height:2px;background:#0e806f;transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.v3-site .v3-brand-grid .brand-card:hover{border-color:#a8cbbb;box-shadow:0 17px 34px rgba(11,59,49,.095);transform:translateY(-4px)}
+.v3-site .v3-brand-grid .brand-card:hover::before{transform:scaleX(1)}
+.v3-site .v3-card-topline{display:flex;align-items:center;justify-content:space-between;gap:8px;font:700 9px/1.4 "DM Sans",sans-serif;letter-spacing:.10em;color:#6b8d82}
+.v3-site .v3-brand-grid .brand-logo-stage{position:relative;width:100%;height:121px;min-height:121px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#fff;border:0;border-radius:0;margin:4px auto 8px;padding:6px}
+.v3-site .v3-brand-grid .brand-logo-stage .brand-image{position:relative;width:auto;max-width:100%;height:auto;max-height:101px;min-height:0;object-fit:contain;filter:none;mix-blend-mode:normal;transform:none;z-index:2;opacity:1}
+.v3-site .v3-brand-grid .brand-logo-stage[data-logo-state="loaded"] .brand-wordmark{display:none}
+.v3-site .v3-brand-grid .brand-wordmark{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;text-align:center;background:#fff;color:#24453f;font-size:17px;line-height:1.2;font-weight:750}
+.v3-site .v3-brand-grid .brand-logo-stage[data-logo-state="loaded"] img{display:block}
+.v3-site .v3-brand-grid [data-logo-boost="mein-haus"] .brand-image{max-height:94px}
+.v3-site .v3-brand-grid [data-logo-boost="serra-da-canastra"] .brand-image{max-height:106px}
+.v3-site .v3-brand-grid [data-logo-boost="italiana-gourmet"] .brand-image{max-width:110px;max-height:108px;border-radius:50%;object-fit:cover}
+.v3-site .v3-brand-caption{display:flex;align-items:center;justify-content:space-between;gap:6px;padding-top:12px;border-top:1px solid #edf0ec}
+.v3-site .v3-brand-caption strong{font-size:15px;letter-spacing:-.035em;line-height:1.2;font-weight:800;color:#223e37}
+.v3-site .v3-brand-caption>span{font-size:10px;font-weight:600;line-height:1.2;color:#739288;text-align:right;max-width:85px}
+.v3-site .v3-brand-grid .brand-slot-feature{grid-column:span 2}
+.v3-site .v3-brand-grid .brand-card-feature{display:grid;grid-template-columns:44% 56%;grid-template-rows:auto 1fr;align-items:stretch;min-height:248px;gap:0;background:#fff;border-color:#b9d4c5}
+.v3-site .v3-brand-grid .brand-card-feature .v3-card-topline{grid-column:1/-1;color:#0b7769}
+.v3-site .v3-brand-grid .brand-card-feature .brand-logo-stage{grid-column:1;grid-row:2;height:170px;min-height:170px;margin:4px auto;padding:10px;background:#fff}
+.v3-site .v3-brand-grid .brand-card-feature .brand-image{max-width:85%;max-height:143px}
+.v3-site .v3-feature-copy{grid-column:2;grid-row:2;align-self:center;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px 10px 0 13px}
+.v3-site .v3-feature-copy h3{font:800 clamp(19px,2.1vw,29px)/1.1 "Outfit",sans-serif;margin:0;color:#163d33;letter-spacing:-.04em}
+.v3-site .v3-feature-copy p{margin:0;color:#506d60;font:400 12px/1.55 "DM Sans",sans-serif;max-width:310px}
+.v3-site .v3-feature-tags{display:flex;gap:6px;flex-wrap:wrap}
+.v3-site .v3-feature-tags span{background:#edf5ef;border-radius:100px;color:#296b58;font-size:9px;font-weight:700;padding:5px 9px}
+.v3-site .v3-feature-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding-top:4px}
+.v3-site .v3-feature-actions a{border-radius:8px;background:#09584d;color:#fff;text-decoration:none;font:700 11px/1 "DM Sans",sans-serif;padding:10px 11px;display:inline-flex;align-items:center;gap:7px;transition:background .2s ease}
+.v3-site .v3-feature-actions a:last-child{background:#edf4ee;color:#145b4d}
+.v3-site .v3-feature-actions a:hover{background:#0b7668;color:white}
+.v3-site .v3-state-showcase{display:flex;flex-direction:column;gap:13px;align-items:stretch;perspective:900px}
+.v3-site .v3-state-card{appearance:none;display:flex;align-items:center;min-height:112px;width:100%;gap:17px;padding:16px 19px;text-align:left;cursor:pointer;color:#f3fff9;border:1px solid rgba(146,216,195,.25);border-radius:15px;background:linear-gradient(115deg,#164a42 0%,#0a332f 85%);box-shadow:0 9px 17px rgba(0,42,32,.14);transform:none;transition:transform .26s ease,box-shadow .26s ease,border-color .26s ease,background .26s ease}
+.v3-site .v3-state-card:hover,.v3-site .v3-state-card:focus-visible{color:#fff;background:linear-gradient(115deg,#206457,#0b453c);border-color:#73bca7;box-shadow:0 15px 29px rgba(0,42,32,.22)}
+.v3-site .v3-state-flag{display:block;width:106px;max-width:31%;flex:none;aspect-ratio:1.5;background:#edf5ec;border:3px solid #e5efe7;border-radius:9px;overflow:hidden;box-shadow:0 5px 10px rgba(0,0,0,.2)}
+.v3-site .v3-state-flag img{width:100%;height:100%;display:block;object-fit:cover}
+.v3-site .v3-state-text{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0}
+.v3-site .v3-state-text small{font-size:9px;letter-spacing:.15em;font-weight:800;color:#9ee1cf}
+.v3-site .v3-state-text strong{font:750 clamp(17px,2vw,23px)/1.1 "Outfit",sans-serif;letter-spacing:-.035em;color:#fff}
+.v3-site .v3-state-text>span{font:500 11px/1.3 "DM Sans",sans-serif;color:#c6e0d7}
+.v3-site .v3-state-arrow{margin-left:auto;align-self:center;font-size:22px;color:#a4dfce}
+.v3-site .coverage-section{background:#e6eee9}
+.v3-site .coverage-section .coverage-grid{align-items:center}
+.v3-site .v3-brand-grid .brand-card:focus-within,.v3-site .v3-state-card:focus-visible{outline:3px solid #00ac93;outline-offset:2px}
+@media(hover:hover) and (pointer:fine) and (min-width:960px){.v3-site .v3-state-card:hover{transform:perspective(900px) rotateY(-3deg) translateY(-3px)}}
+@media(max-width:1023px){.v3-site .v3-brand-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.v3-site .v3-brand-grid .brand-slot-feature{grid-column:span 2}.v3-site .v3-brand-grid .brand-card{min-height:238px}}
+@media(max-width:767px){.v3-site .v3-brand-grid{gap:10px}.v3-site .v3-brand-grid .brand-card{min-height:218px;padding:14px 13px}.v3-site .v3-brand-grid .brand-logo-stage{height:112px;min-height:112px}.v3-site .v3-brand-grid .brand-logo-stage .brand-image{max-height:89px}.v3-site .v3-brand-caption{display:flex;flex-direction:column;align-items:flex-start;gap:4px}.v3-site .v3-brand-caption strong{font-size:13px}.v3-site .v3-brand-caption>span{text-align:left;max-width:none;font-size:9px}.v3-site .v3-brand-grid .brand-card-feature{grid-template-columns:38% 62%;min-height:240px}.v3-site .v3-brand-grid .brand-card-feature .brand-logo-stage{height:162px;min-height:162px;padding:5px}.v3-site .v3-feature-copy{padding:7px 1px 3px 8px;gap:7px}.v3-site .v3-feature-copy h3{font-size:22px}.v3-site .v3-feature-copy p{font-size:10px;line-height:1.45}.v3-site .v3-feature-tags span{font-size:8px;padding:4px 6px}.v3-site .v3-feature-actions a{font-size:10px;padding:9px}.v3-site .v3-state-card{min-height:94px;padding:12px 13px;gap:11px}.v3-site .v3-state-flag{width:86px}.v3-site .v3-state-text strong{font-size:18px}}
+@media(max-width:380px){.v3-site .v3-brand-grid .brand-card-feature{grid-template-columns:1fr}.v3-site .v3-brand-grid .brand-card-feature .v3-card-topline{grid-column:1;grid-row:1}.v3-site .v3-brand-grid .brand-card-feature .brand-logo-stage{grid-row:2;grid-column:1;height:110px;min-height:110px}.v3-site .v3-feature-copy{grid-row:3;grid-column:1}.v3-site .v3-feature-copy p{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.v3-site .v3-brand-grid .brand-card,.v3-site .v3-state-card,.v3-site .v3-brand-grid .brand-card::before{transition:none!important;transform:none!important}}
