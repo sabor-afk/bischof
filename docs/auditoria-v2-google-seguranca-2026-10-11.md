@@ -60,3 +60,26 @@
 - Sem regressões de layout/JS, formulário, catálogo ou cobertura regional.
 
 **Estado desta auditoria:** diagnóstico estático concluído; validações externas pendentes. Nenhuma implantação ou alteração de `site-v2/**` realizada.
+
+## 5. Complemento: auditoria de desempenho e superfície de ataque (11/10/2026)
+
+### Inspeção estática por arquivo (sem medição em ambiente real)
+- Página inicial: **17 tags `img`**, das quais **15** têm `loading="lazy"`. Duas imagens essenciais (logo principal e caminhão) carregam normalmente; isso é apropriado para os elementos da primeira dobra.
+- Arquivos CSS públicos principais: `site-v2.css` 59.722 B, `motion-v2.css` 14.799 B, `formulario-v2.css` 9.367 B (o formulário usa a folha própria; a home usa as duas primeiras). CSS da home: **74.521 B** antes de compressão.
+- Módulos JavaScript: `site-v2.mjs` 13.434 B, `motion-v2.mjs` 7.558 B, `coverage-v2.mjs` 13.153 B, `state-shapes-v2.mjs` 3.397 B (soma: **37.542 B**, antes de compressão).
+- O modal do mapa constrói os pontos somente sob demanda. Interações 3D limitadas a dispositivos com ponteiro compatível; animações possuem tratamento de movimento reduzido.
+- O PDF `pdf/catalogo-bischof.pdf` contém **16.219.980 B (~16,2 MB)**, mas é solicitado pelo visitante ao clicar para baixá-lo, não na abertura da home. Avaliar compressão apenas se a experiência do usuário justificar.
+- Seis logos de parceiros na home não especificam atributos HTML `width`/`height` (imagens com dimensões fixadas pelo layout CSS). Vale conferir deslocamento de layout real antes de qualquer mudança.
+- Fontes externas do Google Fonts adicionam solicitações a terceiros; site usa `preconnect` com `fonts.googleapis.com` e `fonts.gstatic.com`. Recomenda-se medir impacto pelo PageSpeed antes de substituir fontes.
+- O arquivo `site-v2/_headers` configura cache de HTML curto, CSS/JS por 300 s, e imagens por 86400 s. É uma base conservadora, que evita problemas de atualização.
+- Foram examinados módulos JS com busca textual para `eval`, `innerHTML`, `document.write`, `localStorage`, `sessionStorage`, `fetch`. Não apareceram chamadas diretas a esses tokens, mas o resultado **não equivale a teste de vulnerabilidades ou execução de JS**.
+- As páginas inspecionadas não apresentam URLs explícitas `http://` nos `src`/`href` do HTML, e links `target=_blank` têm `rel=noopener`.
+
+### Limites e prioridades
+1. **Medição pendente:** ambiente de inspeção não conseguiu estabelecer conexões HTTPS externas a `bischof.pages.dev` nem `bischof.com.br`. Não há pontuação válida de Lighthouse/PageSpeed, nem confirmação de status HTTP, certificado ou cabeçalhos realmente enviados ao cliente.
+2. **Não ativar CSP estrita de imediato:** testar primeiro política em modo Report-Only, pois fontes do Google, conteúdo embutido JSON-LD e módulos JavaScript exigem uma política compatível.
+3. **Não ativar HSTS às cegas:** confirmar redirecionamentos, certificado e eventuais configurações de Cloudflare que já adicionem HSTS.
+4. **Mais próximo do lançamento:** configurar domínio e confirmar TLS; realizar medição externa de PageSpeed em mobile/desktop, validar formulário, acessibilidade, links e mapa; só então aplicar correções pontuais e revalidar.
+5. **Google continua em homologação:** conservar `noindex` até o domínio canônico estar definido e verificado.
+
+**Nenhum arquivo `site-v2/**` foi alterado; atualização documental apenas.**
