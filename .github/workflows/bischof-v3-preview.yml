@@ -1,0 +1,72 @@
+name: Bischof V3 | Previa isolada
+
+on:
+  push:
+    branches:
+      - site-bischof-v3-experience
+    paths:
+      - 'site-v3/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bischof-v3-preview
+  cancel-in-progress: false
+
+jobs:
+  validar-publicar:
+    name: Validar e publicar previa V3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar branch de testes
+        uses: actions/checkout@v4
+      - name: Verificar V3 e montar diretorio de testes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s site-v3/index.html
+          test -s site-v3/css/v3-cards-final.css
+          test -s site-v3/js/v3-cinema.mjs
+          grep -q 'noindex' site-v3/index.html
+          grep -qi 'X-Robots-Tag.*noindex' site-v3/_headers
+          mkdir -p dist/img dist/pdf
+          cp -R site-v3/. dist/
+          for f in logo-sabor-do-alemao.webp logo-delicks.webp logo-disk-salgadinhos.webp logo-serra-da-canastra.webp logo-daniza.webp logo-mein-haus.webp logo-italiana-gourmet.webp og-image-bischof.webp; do
+            test -s "img/$f"
+            cp "img/$f" "dist/img/$f"
+          done
+          test -s catalogo-interativo.html
+          test -s pdf/catalogo-bischof.pdf
+          cp catalogo-interativo.html dist/
+          cp pdf/catalogo-bischof.pdf dist/pdf/
+          for f in dist/js/*.mjs; do node --check "$f"; done
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          from urllib.parse import urlsplit
+          root=Path('dist')
+          class Validator(HTMLParser):
+              def __init__(self):
+                  super().__init__();self.paths=[]
+              def handle_starttag(self,tag,attrs):
+                  for k,v in attrs:
+                      if k in ('src','href') and v:
+                          u=urlsplit(v)
+                          if not u.scheme and not u.netloc and u.path and not u.path.startswith('#'):
+                              self.paths.append(u.path.lstrip('/'))
+          for html in ('index.html','formulario-bischof.html','privacidade.html'):
+              p=root/html;assert p.is_file(),html
+              v=Validator();v.feed(p.read_text())
+              missing=[u for u in v.paths if u and not (root/u).is_file()]
+              if missing:raise SystemExit(f'{html}: arquivos ausentes: {missing}')
+          print('V3 validada, na pasta de preview apenas.')
+          PY
+      - name: Publicar apenas previa no Pages
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4'
+          command: pages deploy dist --project-name=bischof --branch=site-bischof-v3-experience
